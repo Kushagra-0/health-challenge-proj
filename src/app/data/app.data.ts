@@ -32,7 +32,7 @@ export const userData = [
     },
     {
       id: 4,
-      name: 'Noah',
+      name: 'Sarah Wills',
       workouts: [
         { type: 'Swimming', minutes: 30 },
         { type: 'Cycling', minutes: 30 },
@@ -42,7 +42,7 @@ export const userData = [
     },
     {
       id: 5,
-      name: 'William',
+      name: 'Young Lee',
       workouts: [
         { type: 'Yoga', minutes: 20 },
         { type: 'Weightlifting', minutes: 40 },
