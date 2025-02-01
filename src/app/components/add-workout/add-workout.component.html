@@ -1,0 +1,86 @@
+<form
+      class="min-w-[300px] max-w-[500px] w-full border-2 border-gray-200 shadow-lg p-6 rounded-xl bg-white"
+      #form="ngForm"
+      (ngSubmit)="onSubmit(form)">
+      <h6 class="text-xl font-semibold text-gray-700 mb-4 border-b pb-2">Add Workout Details</h6>
+  
+      <mat-form-field class="w-full">
+        <mat-label>User Name</mat-label>
+        <input 
+          matInput 
+          [(ngModel)]="name" 
+          name="name" 
+          required 
+          class="border border-gray-300 rounded-md p-2 focus:border-blue-500" 
+        />
+        <mat-icon matSuffix>person</mat-icon>
+        <div
+          *ngIf="form.submitted && form.controls['name']?.invalid"
+          class="text-xs text-red-500 mt-1"
+        >
+          User Name is required
+        </div>
+      </mat-form-field>
+  
+      <mat-form-field class="w-full">
+        <mat-label>Workout Type</mat-label>
+        <mat-select 
+          [(ngModel)]="workoutTypes" 
+          name="workoutTypes" 
+          required
+          class="border border-gray-300 rounded-md"
+        >
+          <mat-option
+            *ngFor="let option of workoutOptions"
+            [value]="option.value">
+            {{ option.viewValue }}
+          </mat-option>
+        </mat-select>
+        <mat-icon matSuffix>fitness_center</mat-icon>
+        <div
+          *ngIf="form.submitted && form.controls['workoutTypes']?.invalid"
+          class="text-xs text-red-500 mt-1"
+        >
+          Workout Type is required
+        </div>
+      </mat-form-field>
+  
+      <mat-form-field class="w-full">
+        <mat-label>Workout Minutes</mat-label>
+        <input
+          matInput
+          [(ngModel)]="workoutMinutes"
+          name="workoutMinutes"
+          required
+          type="number"
+          min="1"
+          class="border border-gray-300 rounded-md p-2 focus:border-blue-500"
+        />
+        <mat-icon matSuffix>timer</mat-icon>
+        <div
+          *ngIf="form.submitted && form.controls['workoutMinutes']?.invalid"
+          class="text-xs text-red-500 mt-1"
+        >
+          Workout Minutes are required
+        </div>
+      </mat-form-field>
+  
+      <div class="flex justify-end mt-4 gap-4">
+        <button
+          mat-raised-button
+          type="button"
+          class="bg-gray-300 text-gray-700 font-medium py-2 px-6 rounded-lg shadow-md hover:bg-gray-400 transition duration-300"
+          (click)="onCancel()">
+          Cancel
+        </button>
+        <button
+          mat-flat-button
+          matTooltip="Add Workout in the List"
+          type="submit"
+          class="bg-blue-600 text-white font-medium py-2 px-6 rounded-lg shadow-md hover:bg-blue-700 transition duration-300 flex items-center gap-2"
+        >
+          <mat-icon>addtask</mat-icon>
+          Add Workout
+        </button>
+      </div>
+    </form>
